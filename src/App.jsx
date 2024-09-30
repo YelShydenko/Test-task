@@ -12,7 +12,7 @@ function App() {
       {/* Wrapping all routes with a common Layout component */}
       <Route path="/" element={<Layout />}>
         {/* Route for the login page */}
-        <Route index path="/login" element={<Login />} />
+        <Route index element={<Login />} />
         {/* Route for the profile page */}
         <Route path="/profile" element={<ProfilePage />} />
         {/* Route for the reviews page */}

@@ -12,7 +12,7 @@ const Header = () => {
   // Handler function for logging out the user
   const handleLogout = () => {
     dispatch(logout()); // Dispatches the logout action to clear user data from the store
-    navigate("/login"); // Redirects the user to the login page after logout
+    navigate("/"); // Redirects the user to the login page after logout
   };
 
   return (
