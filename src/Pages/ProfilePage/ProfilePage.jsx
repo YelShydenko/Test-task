@@ -1,6 +1,7 @@
 import "./ProfilePage.scss";
 
 const ProfilePage = () => {
+  // Retrieving the logged-in user's information from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (

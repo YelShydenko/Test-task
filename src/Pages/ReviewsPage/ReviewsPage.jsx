@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux"; // Импортируем хуки Redux
-import { addReview, deleteReview } from "../../store/slices/reviewsSlice"; // Импортируем действия из Redux
-import UserReviewCard from "../../Components/UserReviewCard/UserReviewCard";
-import "./ReviewsPage.scss";
-
+import { useDispatch, useSelector } from "react-redux"; 
+import { addReview, deleteReview } from "../../store/slices/reviewsSlice"; 
+import UserReviewCard from "../../Components/UserReviewCard/UserReviewCard"; 
+import "./ReviewsPage.scss"; 
 const ReviewsPage = () => {
-  // Список заранее созданных пользователей
+  // Predefined list of users
   const initialUsers = [
     { id: 1, name: "User 1", email: "user1@example.com" },
     { id: 2, name: "User 2", email: "user2@example.com" },
@@ -16,66 +15,63 @@ const ReviewsPage = () => {
     { id: 7, name: "User 7", email: "user7@example.com" },
   ];
 
-  const dispatch = useDispatch(); // Хук для отправки действий
-  const reviews = useSelector((state) => state.reviews.reviews); // Получаем отзывы из глобального состояния Redux
-  const userRole = useSelector((state) => state.auth.role);
+  const dispatch = useDispatch(); // Hook for dispatching Redux actions
+  const reviews = useSelector((state) => state.reviews.reviews); // Getting reviews from the Redux store
+  const userRole = useSelector((state) => state.auth.role); // Getting the current user's role from the Redux store
 
-  // Для хранения рейтинга для каждого пользователя
+  // Storing the selected rating for each user
   const [selectedRatings, setSelectedRatings] = useState(() => {
-    const initialRatings = {};
+    const initialRatings = {}; // Initializing ratings for each user
     initialUsers.forEach((user) => {
-      initialRatings[user.id] = 0; // Рейтинг по умолчанию для каждого пользователя
+      initialRatings[user.id] = 1; // Default rating is set to 1 star
     });
     return initialRatings;
   });
 
-  // Обработка выбора рейтинга для каждого пользователя
+  // Handling rating selection for each user
   const handleRatingChange = (userId, rating) => {
-    setSelectedRatings({ ...selectedRatings, [userId]: rating });
+    setSelectedRatings({ ...selectedRatings, [userId]: rating }); // Updating the selected rating for the given user
   };
 
-  // Добавление отзыва для каждого пользователя
+  // Adding a review for a specific user
   const handleAddReview = (data, user) => {
     const newReviewObject = {
-      id: Date.now(),
-      text: data.reviewText,
-      rating: selectedRatings[user.id], // Используем рейтинг для конкретного пользователя
-      author: JSON.parse(localStorage.getItem("user")).email,
-      user: user.email, // Отзыв оставляется для выбранного пользователя
+      id: Date.now(), // Unique ID based on timestamp
+      text: data.reviewText, // The text of the review from form data
+      rating: selectedRatings[user.id], // The rating for the specific user
+      author: JSON.parse(localStorage.getItem("user")).email, // Getting the logged-in user's email from localStorage
+      user: user.email, // The review is being left for this specific user
     };
 
-    dispatch(addReview(newReviewObject)); // Добавляем отзыв через Redux
+    dispatch(addReview(newReviewObject)); // Dispatching the action to add a review in Redux
 
-    // Сброс рейтинга после добавления отзыва
-    setSelectedRatings({ ...selectedRatings, [user.id]: 0 });
+    // Resetting the selected rating after adding a review
+    setSelectedRatings({ ...selectedRatings, [user.id]: 1 });
   };
 
-  // Удаление отзыва (только для админа)
+  // Deleting a review (only for admin)
   const handleDeleteReview = (id) => {
-    dispatch(deleteReview(id)); // Удаление отзыва через Redux
+    dispatch(deleteReview(id)); // Dispatching the action to delete a review in Redux
   };
 
   return (
     <section className="reviews__page">
       <h2>Reviews Page</h2>
-
       <div className="reviews__list">
-        {/* Отображение пользователей с кнопкой "Добавить отзыв" */}
         {initialUsers.map((user) => {
           const userReviews = reviews.filter(
             (review) => review.user === user.email
-          ); // Фильтрация отзывов по каждому пользователю
-
+          );
           return (
             <UserReviewCard
-              key={user.id}
-              user={user}
-              reviews={userReviews}
-              selectedRating={selectedRatings[user.id]}
-              onRatingChange={(rating) => handleRatingChange(user.id, rating)}
-              onAddReview={handleAddReview}
-              onDeleteReview={handleDeleteReview}
-              userRole={userRole}
+              key={user.id} // Unique key for each user
+              user={user} // Passing the user object to the UserReviewCard component
+              reviews={userReviews} // Passing the filtered reviews for this user
+              selectedRating={selectedRatings[user.id]} // Passing the selected rating for this user
+              onRatingChange={(rating) => handleRatingChange(user.id, rating)} // Handling rating change for this user
+              onAddReview={handleAddReview} // Handling review submission for this user
+              onDeleteReview={handleDeleteReview} // Handling review deletion (only for admin)
+              userRole={userRole} // Passing the current user's role (admin/user) to control access to deleting reviews
             />
           );
         })}

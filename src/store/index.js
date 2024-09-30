@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice"; // Редьюсер для авторизации
-import reviewsReducer from "./slices/reviewsSlice"; // Редьюсер для отзывов
+import authReducer from "./slices/authSlice"; 
+import reviewsReducer from "./slices/reviewsSlice"; 
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
-    reviews: reviewsReducer,
+    auth: authReducer, 
+    reviews: reviewsReducer, 
   },
 });
 
