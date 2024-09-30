@@ -1,0 +1,25 @@
+.user__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  &-title {
+    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__email {
+      color: #8db9aa;
+      font-size: 38px;
+    }
+  }
+  &-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 32px;
+    &__score {
+      color: #8db9aa;
+      font-size: 38px;
+    }
+  }
+}

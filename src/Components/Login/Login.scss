@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  &__item {
+    padding: 10px 15px;
+    font-size: 20px;
+    width: 350px;
+  }
+}
+.login__btn {
+  padding: 12px 24px;
+  background: none;
+  border: 1px solid #86887b;
+  border-radius: 8px;
+  color: #8db9aa;
+  font-size: 22px;
+  cursor: pointer;
+}
+.login__message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  p{
+    font-size: 24px;
+  }
+}

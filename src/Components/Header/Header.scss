@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid gray;
+  &__title {
+    font-size: 28px;
+    color: #8db9aa;
+  }
+  &__navbar {
+    display: flex;
+    gap: 36px;
+    &-item {
+      font-size: 22px;
+      color: #86887b;
+    }
+  }
+  &__btn {
+    padding: 12px 24px;
+    background: none;
+    border: 1px solid #86887b;
+    border-radius: 8px;
+    color: #8db9aa;
+    font-size: 22px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,90 @@
+.user__card {
+  border: 1px solid #86887b;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    .average__rating-score {
+      color: #ea4828;
+    }
+  }
+  &-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    .review__form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .stars__container {
+        .star {
+          cursor: pointer;
+          transition: color 0.3s ease;
+          font-size: 24px;
+
+          &.active {
+            color: #f8e9a6;
+          }
+
+          &.inactive {
+            color: #86887b;
+          }
+        }
+      }
+      .review__form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        &-area {
+          padding: 10px;
+          height: 100px;
+          width: 350px;
+        }
+        &-button {
+          padding: 12px 24px;
+          background: none;
+          border: 1px solid #86887b;
+          border-radius: 8px;
+          color: #8db9aa;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+    .reviews__user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      h4 {
+        font-size: 24px;
+      }
+      .user__reviews {
+        list-style: decimal;
+        max-width: 500px;
+        word-wrap: break-word;
+        font-size: 20px;
+        .review__accent-star {
+          color: #ea4828;
+        }
+        .review__accent-author {
+          color: #8db9aa;
+        }
+        .admin__button {
+          padding: 8px 15px;
+          background: none;
+          border: 1px solid #86887b;
+          border-radius: 8px;
+          color: #8db9aa;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
