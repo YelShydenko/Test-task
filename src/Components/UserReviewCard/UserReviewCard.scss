@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-width: 100%;
+
   &-title {
     display: flex;
     justify-content: space-between;
@@ -13,14 +15,17 @@
       color: #ea4828;
     }
   }
+
   &-body {
     display: flex;
     justify-content: space-between;
     gap: 40px;
+
     .review__form-container {
       display: flex;
       flex-direction: column;
       gap: 15px;
+
       .stars__container {
         .star {
           cursor: pointer;
@@ -36,16 +41,19 @@
           }
         }
       }
+
       .review__form {
         display: flex;
         flex-direction: column;
         gap: 20px;
         align-items: center;
+
         &-area {
           padding: 10px;
           height: 100px;
           width: 350px;
         }
+
         &-button {
           padding: 12px 24px;
           background: none;
@@ -57,6 +65,7 @@
         }
       }
     }
+
     .reviews__user-list {
       display: flex;
       flex-direction: column;
@@ -64,17 +73,27 @@
       h4 {
         font-size: 24px;
       }
+
       .user__reviews {
         list-style: decimal;
-        max-width: 500px;
-        word-wrap: break-word;
+        max-width: 100%;
         font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .review__content {
+          word-break: break-word;
+        }
+
         .review__accent-star {
           color: #ea4828;
         }
+
         .review__accent-author {
           color: #8db9aa;
         }
+
         .admin__button {
           padding: 8px 15px;
           background: none;
@@ -84,6 +103,32 @@
           font-size: 18px;
           cursor: pointer;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .user__card-body {
+    flex-wrap: wrap;
+    justify-content: center;
+    .reviews__user-list {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 515px) {
+  .user__card-title {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 425px) {
+  .user__card-body {
+    .review__form-container{
+      .review__form-area{
+        width: 250px;
       }
     }
   }

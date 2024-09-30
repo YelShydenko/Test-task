@@ -2,24 +2,63 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding: 20px;
+
   &-title {
     font-size: 32px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     &__email {
       color: #8db9aa;
       font-size: 38px;
     }
   }
+
   &-rating {
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 32px;
+
     &__score {
       color: #8db9aa;
       font-size: 38px;
+    }
+  }
+}
+
+@media (max-width: 545px) {
+  .user__profile {
+    &-title {
+      font-size: 28px;
+      &__email {
+        font-size: 30px;
+      }
+    }
+    &-rating {
+      font-size: 28px;
+      &__score {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 435px) {
+  .user__profile {
+    &-title {
+      font-size: 20px;
+      &__email {
+        font-size: 22px;
+      }
+    }
+    &-rating {
+      font-size: 20px;
+      &__score {
+        font-size: 22px;
+      }
     }
   }
 }

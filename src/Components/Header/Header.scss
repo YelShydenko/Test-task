@@ -27,3 +27,39 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 530px) {
+  .header{
+    justify-content: space-between;
+    &__title{
+      font-size: 18px;
+    }
+    .header__navbar{
+      gap: 10px;
+      &-item{
+        font-size: 18px;
+      }
+    }
+    &__btn{
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .header{
+    &__title{
+      font-size: 16px;
+    }
+    .header__navbar{
+      gap: 10px;
+      flex-direction: column;
+      &-item{
+        font-size: 16px;
+      }
+    }
+    &__btn{
+      font-size: 16px;
+    }
+  }
+}
